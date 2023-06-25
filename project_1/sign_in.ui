@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>sign_up</class>
- <widget class="QWidget" name="sign_up">
+ <class>sign_in</class>
+ <widget class="QWidget" name="sign_in">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>382</width>
+    <width>400</width>
     <height>300</height>
    </rect>
   </property>

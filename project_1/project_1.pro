@@ -12,16 +12,21 @@ SOURCES += \
     data.cpp \
     main.cpp \
     mainwindow.cpp \
-    sign_up.cpp
+    menu.cpp \
+    personal.cpp \
+    signup.cpp
 
 HEADERS += \
     data.h \
     mainwindow.h \
-    sign_up.h
+    menu.h \
+    personal.h \
+    signup.h
 
 FORMS += \
     mainwindow.ui \
-    sign_up.ui
+    menu.ui \
+    signup.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -30,4 +35,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     pic22.qrc \
-    pictuer.qrc
+    pictuer.qrc \
+    sticker.qrc

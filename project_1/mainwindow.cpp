@@ -2,9 +2,14 @@
 #include "ui_mainwindow.h"
 #include "signup.h"
 #include "vector"
-#include "data.h"
+#include <personal.h>
+#include"qfile.h"
+#include"QFileDialog"
 
-QVector<data>T;
+
+multimap <string, personal> information;
+
+//QVector<data>T;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -20,12 +25,5 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_pushButton_clicked()
-{
-    signup *s=new signup();
-    s->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint);
-    s->show();
-    hide();
 
-}
 
