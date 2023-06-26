@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     data.cpp \
+    login.cpp \
     main.cpp \
     mainwindow.cpp \
     menu.cpp \
@@ -18,12 +19,14 @@ SOURCES += \
 
 HEADERS += \
     data.h \
+    login.h \
     mainwindow.h \
     menu.h \
     personal.h \
     signup.h
 
 FORMS += \
+    login.ui \
     mainwindow.ui \
     menu.ui \
     signup.ui
@@ -36,4 +39,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     pic22.qrc \
     pictuer.qrc \
-    sticker.qrc
+    sticker.qrc \
+    sticker2.qrc \
+    sticker3.qrc

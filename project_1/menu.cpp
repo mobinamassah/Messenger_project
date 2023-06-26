@@ -2,7 +2,7 @@
 #include "ui_menu.h"
 #include "mainwindow.h"
 #include "signup.h"
-
+#include "login.h"
 menu::menu(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::menu)
@@ -22,5 +22,13 @@ void menu::on_pushButton_clicked()
     hide();
 
 
+}
+
+
+void menu::on_pushButton_2_clicked()
+{
+    login*l=new login();
+    l->show();
+    hide();
 }
 
