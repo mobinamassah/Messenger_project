@@ -57,10 +57,21 @@ void signup::on_pushButton_clicked(){
         }
         file.close();
     }
-     menu *a=new menu();
-     a->show();
-     this->close();
+    menu *a=new menu();
+    a->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
+    a->show();
+    this->close();
   }
 
 
+
+
+void signup::on_pushButton_2_clicked()
+{
+    menu *a=new menu();
+    a->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
+    a->show();
+    this->close();
+
+}
 

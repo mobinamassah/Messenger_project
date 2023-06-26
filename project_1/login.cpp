@@ -1,4 +1,5 @@
 #include "login.h"
+#include "menu.h"
 #include "ui_login.h"
 
 login::login(QWidget *parent) :
@@ -18,6 +19,18 @@ login::~login()
 
 void login::on_pushButton_clicked()
 {
+    menu *a=new menu();
+    a->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
+    a->show();
+    this->close();
+}
 
+
+void login::on_pushButton_2_clicked()
+{
+    menu *a=new menu();
+    a->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
+    a->show();
+    this->close();
 }
 
