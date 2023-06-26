@@ -7,6 +7,10 @@
 #include"QFileDialog"
 #include "ui_signup.h"
 #include "menu.h"
+#include <QApplication>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <QPalette>
 using namespace std;
 
 signup::signup(QWidget *parent) :
@@ -40,6 +44,69 @@ void signup::on_pushButton_clicked(){
 
     string username=ui->lineEdit->text().toStdString();
     class personal p;
+    //ui->lineEdit_2->setEchoMode(QLineEdit::Password);
+
+
+    //QString style = "border: 2px solid red"; // استایلی که برای نمایش خطاها استفاده می‌شود
+
+    if (ui->lineEdit->text().isEmpty()) {
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Do Not Enter Username.");
+        msgBox.setText("Please Enter Your Username 🙄      ");
+        msgBox.setStyleSheet("background-color: gray;");
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.setDefaultButton(QMessageBox::Ok);
+
+        // Set the escape button to be the Cancel button
+
+
+        int ret = msgBox.exec();
+        if (ret == QMessageBox::Ok) {
+            signup *s=new signup();
+            s->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
+            s->show();
+            this->close();
+            return;
+        }
+
+        //QPalette pal = msgBox.palette();
+        //pal.setColor(QPalette::Window, Qt::red);
+        //msgBox.setPalette(pal);
+
+        msgBox.exec();
+        //ui->lineEdit->setPlaceholderText("*UserName");
+        //ui->lineEdit->setStyleSheet("color::red");
+
+    }
+
+    if (ui->lineEdit_2->text().isEmpty()) {
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Do Not Enter Password.");
+        msgBox.setText("Please Enter Your Password 🙄      ");
+        msgBox.setStyleSheet("background-color: gray;");
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.setDefaultButton(QMessageBox::Ok);
+
+        // Set the escape button to be the Cancel button
+
+
+        int ret = msgBox.exec();
+        if (ret == QMessageBox::Ok) {
+            signup *s=new signup();
+            s->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
+            s->show();
+            this->close();
+            return;
+        }
+
+        //QPalette pal = msgBox.palette();
+        //pal.setColor(QPalette::Window, Qt::red);
+        //msgBox.setPalette(pal);
+
+        msgBox.exec();
+
+        //ui->lineEdit_2->setStyleSheet("color::red");
+    }
     string usernam=ui->lineEdit->text().toStdString();
     p.set_username(ui->lineEdit->text().toStdString());
     p.set_password(ui->lineEdit_2->text().toStdString());
