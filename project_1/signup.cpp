@@ -1,7 +1,7 @@
 #include "signup.h"
 #include "data.h"
 #include "mainwindow.h"
-#include <personal.h>
+#include "personal.h"
 #include "personal.h"
 #include"qfile.h"
 #include"QFileDialog"
@@ -11,6 +11,7 @@
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QPalette>
+#include "file_function.h"
 using namespace std;
 
 signup::signup(QWidget *parent) :
@@ -52,8 +53,10 @@ void signup::on_pushButton_clicked(){
     if (ui->lineEdit->text().isEmpty()) {
         QMessageBox msgBox;
         msgBox.setWindowTitle("Do Not Enter Username.");
-        msgBox.setText("Please Enter Your Username 🙄      ");
-        msgBox.setStyleSheet("background-color: gray;");
+        msgBox.setText("Please Enter Your Username 🙄");
+        msgBox.setIcon(QMessageBox::Critical);
+
+        msgBox.setStyleSheet("QMessageBox { background-color: #3297a8; font-size: 16px; font-weight: bold; }");
         msgBox.setStandardButtons(QMessageBox::Ok);
         msgBox.setDefaultButton(QMessageBox::Ok);
 
@@ -81,9 +84,11 @@ void signup::on_pushButton_clicked(){
 
     if (ui->lineEdit_2->text().isEmpty()) {
         QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Warning);
         msgBox.setWindowTitle("Do Not Enter Password.");
-        msgBox.setText("Please Enter Your Password 🙄      ");
-        msgBox.setStyleSheet("background-color: gray;");
+        msgBox.setText("Please Enter Your Password 🙄");
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.setStyleSheet("QMessageBox { background-color: #3297a8; font-size: 16px; font-weight: bold; }");
         msgBox.setStandardButtons(QMessageBox::Ok);
         msgBox.setDefaultButton(QMessageBox::Ok);
 
@@ -107,23 +112,23 @@ void signup::on_pushButton_clicked(){
 
         //ui->lineEdit_2->setStyleSheet("color::red");
     }
-    string usernam=ui->lineEdit->text().toStdString();
-    p.set_username(ui->lineEdit->text().toStdString());
-    p.set_password(ui->lineEdit_2->text().toStdString());
-    p.set_firstname(ui->lineEdit_3->text().toStdString());
-    p.set_lastname(ui->lineEdit_4->text().toStdString());
-    pair <string, personal> person(usernam, p);
-    information.insert(person);
-    QString filePath = "information.txt";
-    QFile file(filePath);
-    if (file.open(QIODevice::WriteOnly | QIODevice::Text))
-    {
-        QTextStream out(&file);
-        for (auto it = information.begin(); it != information.end(); ++it) {
-            out << QString::fromStdString(it->first) << "/" << QString::fromStdString(it->second.get_password()) << "/" <<QString::fromStdString(it->second.get_token())<<QString::fromStdString(it->second.get_firstname())<<QString::fromStdString(it->second.get_lastname())  <<"\n";
-        }
-        file.close();
+    //QString usernam=ui->lineEdit->text();
+    //p.set_username(ui->lineEdit->text());
+    //p.set_password(ui->lineEdit_2->text());
+    //p.set_firstname(ui->lineEdit_3->text());
+    //p.set_lastname(ui->lineEdit_4->text());
+    //pair <QString, personal> person(usernam, p);
+    //information.insert(person);
+    //information.push_back(p);
+    //personal per;
+
+    QString filename = "information";
+    personal* newp=new personal(ui->lineEdit->text(),ui->lineEdit_2->text(),ui->lineEdit_3->text(),ui->lineEdit_4->text());
+    information.push_back(newp);
+    for(auto it=information.begin();it!=information.end();it++){
+        file_write(filename,**it);
     }
+
     menu *a=new menu();
     a->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
     a->show();

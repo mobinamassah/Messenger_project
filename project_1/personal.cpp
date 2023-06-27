@@ -8,7 +8,7 @@ personal::personal()
     lastname="";
     token="";
 }
-personal::personal(string _username,string _password,string _firstname,string _lastname)
+personal::personal(QString _username, QString _password, QString _firstname, QString _lastname)
 {
     username=_username;
     password=_password;
@@ -17,34 +17,34 @@ personal::personal(string _username,string _password,string _firstname,string _l
     token="";
 }
 
-void personal::set_username(string _username){
+void personal::set_username(QString _username){
    username=_username;
 }
-void personal::set_password(string _password){
+void personal::set_password(QString _password){
    password=_password;
 }
-void personal::set_lastname(string _lastname){
+void personal::set_lastname(QString _lastname){
    lastname=_lastname;
 }
-void personal::set_firstname(string _firstname){
+void personal::set_firstname(QString _firstname){
    firstname=_firstname;
 }
-void personal::set_token(string _token){
+void personal::set_token(QString _token){
    token=_token;
 }
 
-string personal:: get_username(){
+QString personal:: get_username(){
    return username;
 }
-string personal:: get_password(){
+QString personal:: get_password(){
    return password;
 }
-string personal:: get_lastname(){
+QString personal:: get_lastname(){
    return lastname;
 }
-string personal:: get_firstname(){
+QString personal:: get_firstname(){
    return firstname;
 }
-string personal:: get_token(){
+QString personal:: get_token(){
    return token;
 }

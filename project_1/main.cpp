@@ -2,6 +2,8 @@
 #include "menu.h"
 #include <QApplication>
 #include <QMainWindow>
+#include <QFile>
+#include<QVector>
 
 int main(int argc, char *argv[])
 {
@@ -10,6 +12,8 @@ int main(int argc, char *argv[])
     w.setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
     //w.setMenuBar(nullptr);
     w.show();
+
+
     return a.exec();
 }
 

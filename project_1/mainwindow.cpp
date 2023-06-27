@@ -1,13 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "signup.h"
-#include "vector"
+#include "QVector"
 #include <personal.h>
 #include"qfile.h"
 #include"QFileDialog"
+using namespace std;
 
 
-multimap <string, personal> information;
+QVector<personal*> information;
 
 //QVector<data>T;
 

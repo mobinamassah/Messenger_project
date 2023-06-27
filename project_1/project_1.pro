@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     data.cpp \
+    file_function.cpp \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     data.h \
+    file_function.h \
     login.h \
     mainwindow.h \
     menu.h \

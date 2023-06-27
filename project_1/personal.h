@@ -12,24 +12,24 @@ using namespace std;
 class personal
 {
 private:
-        string username;
-        string password;
-        string token;
-        string lastname;
-        string firstname;
+        QString username;
+        QString password;
+        QString token;
+        QString lastname;
+        QString firstname;
 public:
-        string get_username();
-        string get_password();
-        string get_lastname();
-        string get_firstname();
-        string get_token();
-        void set_username(string _username);
-        void set_password(string _password);
-        void set_lastname(string _lastname);
-        void set_firstname(string _firstname);
-        void set_token(string _token);
+        QString get_username();
+        QString get_password();
+        QString get_lastname();
+        QString get_firstname();
+        QString get_token();
+        void set_username(QString _username);
+        void set_password(QString _password);
+        void set_lastname(QString _lastname);
+        void set_firstname(QString _firstname);
+        void set_token(QString _token);
         personal();
-        personal(string _username,string _password,string _firstname,string _lastname);
+        personal(QString _username,QString _password,QString _firstname,QString _lastname);
 };
 
 #endif // PERSONAL_H

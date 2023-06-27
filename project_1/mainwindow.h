@@ -8,6 +8,7 @@
 #include<algorithm>
 #include <QMainWindow>
 #include <personal.h>
+#include <QVector>
 using namespace std;
 
 
@@ -19,7 +20,7 @@ QT_END_NAMESPACE
     //string password;
    // string token;
 //};
-extern multimap <string, personal> information;
+extern QVector <personal*> information;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
