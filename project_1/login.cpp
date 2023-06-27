@@ -7,7 +7,7 @@
 #include "ui_login.h"
 #include <QFile>
 #include "file_function.h"
-
+#include <selection_page.h>
 
 login::login(QWidget *parent) :
     QWidget(parent),
@@ -94,8 +94,10 @@ void login::on_pushButton_clicked()
     QMessageBox q;
         for (auto it = information.begin(); it != information.end(); ++it) {
             if((*it)->get_username()==ui->lineEdit->text() && (*it)->get_password()==ui-> lineEdit_2->text()){
-                q.setText("Confirmed    ");
-                q.exec();
+                Selection_page *sp=new Selection_page();
+                sp->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
+                sp->show();
+                this->close();
                 break;
 
             }
@@ -125,10 +127,10 @@ void login::on_pushButton_clicked()
                     }
         }
        }
-    menu *a=new menu();
-    a->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
-    a->show();
-    this->close();
+    //menu *a=new menu();
+    //a->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
+    //a->show();
+    //this->close();
 }
 
 

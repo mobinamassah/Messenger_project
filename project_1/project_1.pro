@@ -16,6 +16,8 @@ SOURCES += \
     mainwindow.cpp \
     menu.cpp \
     personal.cpp \
+    private_chat.cpp \
+    selection_page.cpp \
     signup.cpp
 
 HEADERS += \
@@ -25,12 +27,16 @@ HEADERS += \
     mainwindow.h \
     menu.h \
     personal.h \
+    private_chat.h \
+    selection_page.h \
     signup.h
 
 FORMS += \
     login.ui \
     mainwindow.ui \
     menu.ui \
+    private_chat.ui \
+    selection_page.ui \
     signup.ui
 
 # Default rules for deployment.
@@ -39,8 +45,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    background_chat.qrc \
     pic22.qrc \
     pictuer.qrc \
+    send.qrc \
+    stic4.qrc \
     sticker.qrc \
     sticker2.qrc \
     sticker3.qrc
