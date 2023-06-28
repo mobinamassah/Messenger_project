@@ -28,6 +28,7 @@ void menu::on_pushButton_clicked()
 void menu::on_pushButton_2_clicked()
 {
     login*l=new login();
+
     l->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
     l->show();
     hide();
