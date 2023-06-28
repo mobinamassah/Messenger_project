@@ -1,4 +1,5 @@
 #include "selection_page.h"
+#include "menu.h"
 #include "ui_selection_page.h"
 #include <private_chat.h>
 Selection_page::Selection_page(QWidget *parent) :
@@ -22,4 +23,13 @@ void Selection_page::on_pushButton_clicked()
 }
 
 
+
+
+void Selection_page::on_pushButton_4_clicked()
+{
+    menu *a=new menu();
+    a->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
+    a->show();
+    this->close();
+}
 
