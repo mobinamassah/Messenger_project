@@ -3,6 +3,7 @@
 #include "mainwindow.h"
 #include "personal.h"
 #include "personal.h"
+#include "private_chat.h"
 #include"qfile.h"
 #include"QFileDialog"
 #include "ui_signup.h"
@@ -12,6 +13,16 @@
 #include <QMessageBox>
 #include <QPalette>
 #include "file_function.h"
+#include "signup_client.h"
+#include <QCoreApplication>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QUrlQuery>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QDebug>
+#include <QInputDialog>
 using namespace std;
 
 signup::signup(QWidget *parent) :
@@ -23,6 +34,14 @@ signup::signup(QWidget *parent) :
     ui->lineEdit_2->setPlaceholderText("Password");
     ui->lineEdit_3->setPlaceholderText("Firstname");
     ui->lineEdit_4->setPlaceholderText("Lastname");
+    //QPushButton *sign_Button = new QPushButton("login");
+
+        net_manager = new QNetworkAccessManager(this);
+
+        connect(net_manager, &QNetworkAccessManager::finished, this, &signup::server_reply);
+
+        //connect(sign_Button, &QPushButton::clicked, this, &signup::login);
+
 
 
 }
@@ -31,8 +50,64 @@ signup::~signup()
 {
     delete ui;
 }
+void signup::send_request(QString usernam, QString password, QString firstname, QString lastname)
+{
+    QUrl url("http://api.barafardayebehtar.ml:8080/signup?");
+    QUrlQuery query;
 
-void signup::on_pushButton_clicked(){
+    query.addQueryItem("username", usernam);
+    query.addQueryItem("password", password);
+    query.addQueryItem("firstname", firstname);
+    query.addQueryItem("lastname", lastname);
+    url.setQuery(query);
+    request.setUrl(url);
+    net_manager->get(request);
+}
+
+
+void signup::server_reply(QNetworkReply* reply)
+{
+    QString reply_message = reply->readAll();
+    QJsonDocument jDoc = QJsonDocument::fromJson(reply_message.toUtf8());
+    QJsonObject jObj = jDoc.object();
+    //qDebug()<<jObj["message"].toString();
+    //qDebug()<<jObj["code"].toString();
+    //if(jObj["code"].toString().compare("200")== 0)
+    //{
+        QMessageBox msg;
+        //msg.setIcon(QMessageBox::Information);
+        msg.setIcon(QMessageBox::Information);
+        msg.setWindowTitle(jObj["code"].toString());
+        msg.setText(jObj["message"].toString()+"😀");
+        msg.setIcon(QMessageBox::Information);
+        msg.setStyleSheet("QMessageBox { background-color: #3297a8; font-size: 16px; font-weight: bold; }");
+        msg.setStandardButtons(QMessageBox::Ok);
+        msg.setDefaultButton(QMessageBox::Ok);
+
+        // Set the escape button to be the Cancel button
+
+
+        int ret = msg.exec();
+        if (ret == QMessageBox::Ok) {
+            menu *s=new menu();
+            s->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
+            s->show();
+            this->close();
+            return;
+        }
+
+        //QPalette pal = msgBox.palette();
+        //pal.setColor(QPalette::Window, Qt::red);
+        //msgBox.setPalette(pal);
+
+        msg.exec();
+
+        //QMessageBox::information(nullptr, jObj["code"].toString(),jObj["message"].toString());
+
+   //}
+}
+void signup::on_pushButton_clicked()
+{
 
     //class data d;
     //d.set_username(ui->lineEdit->text());
@@ -121,6 +196,34 @@ void signup::on_pushButton_clicked(){
     //information.insert(person);
     //information.push_back(p);
     //personal per;
+        QString usernam = ui->lineEdit->text();
+        QString password = ui->lineEdit_2->text();
+        QString firstname = ui->lineEdit_3->text();
+        QString lastname = ui->lineEdit_4->text();
+        signup_client client1;
+        send_request(usernam,password,firstname,lastname);
+
+
+
+        //QObject::connect(&client1, &signup_client::signUpResponse, [&](QString message, QString code) {
+            //QString title;
+            //if (code.isEmpty()) {
+             //   title = "Error";
+              //  message = "Error: " + message;
+            //} else {
+             //   title = "Success";
+               // message = "Message: " + message + "\nCode: " + code;
+            //}
+            //QMessageBox::information(nullptr, title, message);
+        //});
+
+
+
+
+                //client1.sign_Up(usernam, password, firstname, lastname);
+
+
+        //signup_client.sign_Up(username, password, firstname, lastname);
 
     QString filename = "information";
     personal* newp=new personal(ui->lineEdit->text(),ui->lineEdit_2->text(),ui->lineEdit_3->text(),ui->lineEdit_4->text());
@@ -129,14 +232,11 @@ void signup::on_pushButton_clicked(){
         file_write(filename,**it);
     }
 
-    menu *a=new menu();
-    a->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
-    a->show();
-    this->close();
+    //menu *a=new menu();
+    //a->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
+    //a->show();
+    //this->close();
   }
-
-
-
 
 void signup::on_pushButton_2_clicked()
 {
