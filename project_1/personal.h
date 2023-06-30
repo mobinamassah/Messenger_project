@@ -30,6 +30,7 @@ public:
         void set_token(QString _token);
         personal();
         personal(QString _username,QString _password,QString _firstname,QString _lastname);
+        personal(QString _username, QString _password, QString _token);
 };
 
 #endif // PERSONAL_H

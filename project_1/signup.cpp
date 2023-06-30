@@ -84,7 +84,7 @@ void signup::server_reply(QNetworkReply* reply)
         msg.setStandardButtons(QMessageBox::Ok);
         msg.setDefaultButton(QMessageBox::Ok);
 
-        // Set the escape button to be the Cancel button
+
 
 
         int ret = msg.exec();
@@ -200,7 +200,7 @@ void signup::on_pushButton_clicked()
         QString password = ui->lineEdit_2->text();
         QString firstname = ui->lineEdit_3->text();
         QString lastname = ui->lineEdit_4->text();
-        signup_client client1;
+
         send_request(usernam,password,firstname,lastname);
 
 
@@ -225,12 +225,12 @@ void signup::on_pushButton_clicked()
 
         //signup_client.sign_Up(username, password, firstname, lastname);
 
-    QString filename = "information";
-    personal* newp=new personal(ui->lineEdit->text(),ui->lineEdit_2->text(),ui->lineEdit_3->text(),ui->lineEdit_4->text());
-    information.push_back(newp);
-    for(auto it=information.begin();it!=information.end();it++){
-        file_write(filename,**it);
-    }
+// QString filename = "information";
+//personal* newp=new personal(ui->lineEdit->text(),ui->lineEdit_2->text(),ui->lineEdit_3->text(),ui->lineEdit_4->text());
+//information.push_back(newp);
+//for(auto it=information.begin();it!=information.end();it++){
+// file_write(filename,**it);
+//}
 
     //menu *a=new menu();
     //a->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
