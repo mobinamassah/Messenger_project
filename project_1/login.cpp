@@ -15,7 +15,7 @@ login::login(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::login)
 {
-    //ui->setupUi(this);
+    ui->setupUi(this);
     QString filename="information";
     file_read(filename);
     ui->setupUi(this);

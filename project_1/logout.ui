@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>login</class>
- <widget class="QWidget" name="login">
+ <class>logout</class>
+ <widget class="QWidget" name="logout">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -30,9 +30,21 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>391</width>
-     <height>261</height>
+     <width>380</width>
+     <height>250</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>380</width>
+     <height>250</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>380</width>
+     <height>250</height>
+    </size>
    </property>
    <property name="styleSheet">
     <string notr="true">border-image: url(:/pic22/pic2.jpg);</string>
@@ -44,7 +56,7 @@
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>50</y>
      <width>211</width>
      <height>22</height>
@@ -59,7 +71,7 @@ background-color: rgb(158, 213, 166);</string>
   <widget class="QLineEdit" name="lineEdit_2">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>90</y>
      <width>211</width>
      <height>22</height>
@@ -68,15 +80,14 @@ background-color: rgb(158, 213, 166);</string>
    <property name="styleSheet">
     <string notr="true">
 border-rAdius:10px;
-background-color: rgb(158, 213, 166);
-</string>
+background-color: rgb(158, 213, 166);</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>180</y>
+     <y>170</y>
      <width>71</width>
      <height>24</height>
     </rect>
@@ -86,14 +97,33 @@ background-color: rgb(158, 213, 166);
 color: rgb(0, 0, 0);
 background-color: rgb(166, 166, 166);
 
-border-rAdius:10px;
-</string>
+border-rAdius:10px;</string>
    </property>
    <property name="text">
     <string>OK</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>170</y>
+     <width>71</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;Courgette&quot;;
+color: rgb(0, 0, 0);
+background-color: rgb(166, 166, 166);
+
+border-rAdius:10px;</string>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
      <x>280</x>
@@ -103,34 +133,11 @@ border-rAdius:10px;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/sticker/images (1).png);
-
-border-rAdius:10px;
-</string>
+    <string notr="true">border-image: url(:/sticker/pic2.jpeg);
+border-rAdius:10px;</string>
    </property>
    <property name="text">
     <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_2">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>180</y>
-     <width>71</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 14pt &quot;Courgette&quot;;
-color: rgb(0, 0, 0);
-background-color: rgb(166, 166, 166);
-
-border-rAdius:10px;
-</string>
-   </property>
-   <property name="text">
-    <string>Cancel</string>
    </property>
   </widget>
  </widget>

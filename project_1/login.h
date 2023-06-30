@@ -21,9 +21,9 @@ class login : public QWidget
 public:
     explicit login(QWidget *parent = nullptr);
     ~login();
-        void send_reques(QString usernam, QString password);
-        void server_repl(QNetworkReply* reply);
-        QNetworkAccessManager* net_manage;
+     void send_reques(QString usernam, QString password);
+     void server_repl(QNetworkReply* reply);
+     QNetworkAccessManager* net_manage;
 
 
 private slots:

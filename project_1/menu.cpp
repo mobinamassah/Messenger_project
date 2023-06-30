@@ -1,4 +1,5 @@
 #include "menu.h"
+#include "logout.h"
 #include "ui_menu.h"
 #include "mainwindow.h"
 #include "signup.h"
@@ -31,6 +32,15 @@ void menu::on_pushButton_2_clicked()
 
     l->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
     l->show();
+    hide();
+}
+
+
+void menu::on_pushButton_3_clicked()
+{
+    logout*g=new logout();
+    g->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
+    g->show();
     hide();
 }
 

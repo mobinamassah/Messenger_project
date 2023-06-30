@@ -12,6 +12,7 @@ SOURCES += \
     data.cpp \
     file_function.cpp \
     login.cpp \
+    logout.cpp \
     main.cpp \
     mainwindow.cpp \
     menu.cpp \
@@ -24,6 +25,7 @@ HEADERS += \
     data.h \
     file_function.h \
     login.h \
+    logout.h \
     mainwindow.h \
     menu.h \
     personal.h \
@@ -33,6 +35,7 @@ HEADERS += \
 
 FORMS += \
     login.ui \
+    logout.ui \
     mainwindow.ui \
     menu.ui \
     private_chat.ui \
