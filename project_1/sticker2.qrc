@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/sticker2">
+        <file>ww(2).jpg</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/send">
+        <file>download.png</file>
+        <file>images (5).jpeg</file>
+    </qresource>
+</RCC>
