@@ -84,7 +84,11 @@ void signup::server_reply(QNetworkReply* reply)
         msg.setStandardButtons(QMessageBox::Ok);
         msg.setDefaultButton(QMessageBox::Ok);
 
+<<<<<<< HEAD
         // Set the escape button to be the Cancel button
+=======
+
+>>>>>>> 3dcb093034070247bfa4742d52556b7fcc2a9515
 
 
         int ret = msg.exec();
@@ -200,6 +204,7 @@ void signup::on_pushButton_clicked()
         QString password = ui->lineEdit_2->text();
         QString firstname = ui->lineEdit_3->text();
         QString lastname = ui->lineEdit_4->text();
+<<<<<<< HEAD
         signup_client client1;
         send_request(usernam,password,firstname,lastname);
 
@@ -224,14 +229,43 @@ void signup::on_pushButton_clicked()
 
 
         //signup_client.sign_Up(username, password, firstname, lastname);
+=======
+>>>>>>> 3dcb093034070247bfa4742d52556b7fcc2a9515
 
-    QString filename = "information";
-    personal* newp=new personal(ui->lineEdit->text(),ui->lineEdit_2->text(),ui->lineEdit_3->text(),ui->lineEdit_4->text());
-    information.push_back(newp);
-    for(auto it=information.begin();it!=information.end();it++){
-        file_write(filename,**it);
-    }
+        send_request(usernam,password,firstname,lastname);
 
+<<<<<<< HEAD
+=======
+
+
+        //QObject::connect(&client1, &signup_client::signUpResponse, [&](QString message, QString code) {
+            //QString title;
+            //if (code.isEmpty()) {
+             //   title = "Error";
+              //  message = "Error: " + message;
+            //} else {
+             //   title = "Success";
+               // message = "Message: " + message + "\nCode: " + code;
+            //}
+            //QMessageBox::information(nullptr, title, message);
+        //});
+
+
+
+
+                //client1.sign_Up(usernam, password, firstname, lastname);
+
+
+        //signup_client.sign_Up(username, password, firstname, lastname);
+
+// QString filename = "information";
+//personal* newp=new personal(ui->lineEdit->text(),ui->lineEdit_2->text(),ui->lineEdit_3->text(),ui->lineEdit_4->text());
+//information.push_back(newp);
+//for(auto it=information.begin();it!=information.end();it++){
+// file_write(filename,**it);
+//}
+
+>>>>>>> 3dcb093034070247bfa4742d52556b7fcc2a9515
     //menu *a=new menu();
     //a->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
     //a->show();

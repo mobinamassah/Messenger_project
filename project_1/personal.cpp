@@ -22,7 +22,10 @@ personal::personal(QString _username, QString _password, QString _token)
     password=_password;
     token=_token;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3dcb093034070247bfa4742d52556b7fcc2a9515
 void personal::set_username(QString _username){
    username=_username;
 }
