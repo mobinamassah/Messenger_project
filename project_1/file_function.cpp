@@ -7,7 +7,7 @@ void file_write(QString fname,personal p){
     if (file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
             QTextStream out(&file);
-            out << p.get_username() << "/" << p.get_password() << "/" <<p.get_firstname()<<"/"<<p.get_lastname()<<"/";
+            out << p.get_username() << "/" << p.get_password() << "/" <<p.get_token();
             out << "\n";
         }
         file.close();
@@ -23,10 +23,10 @@ void file_read(QString fname){
                 QStringList fields=line.split("/");
                 QString username=fields[0];
                 QString password=fields[1];
-                QString firstname=fields[2];
-                QString lastname=fields[3];
+                QString token=fields[2];
+                //QString lastname=fields[3];
 
-                personal *p=new personal(username,password,firstname,lastname);
+                personal *p=new personal(username,password,token);
                 //p.get_username() = username;
                 //p.get_password() = password;
                 //p.get_firstname() = firstname;
