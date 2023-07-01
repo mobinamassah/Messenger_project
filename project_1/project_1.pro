@@ -1,5 +1,5 @@
 QT       += core gui
-
+QT       += network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     data.cpp \
     file_function.cpp \
+    log_out.cpp \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -18,26 +19,31 @@ SOURCES += \
     personal.cpp \
     private_chat.cpp \
     selection_page.cpp \
-    signup.cpp
+    signup.cpp \
+    signup_client.cpp
 
 HEADERS += \
     data.h \
     file_function.h \
+    log_out.h \
     login.h \
     mainwindow.h \
     menu.h \
     personal.h \
     private_chat.h \
     selection_page.h \
-    signup.h
+    signup.h \
+    signup_client.h
 
 FORMS += \
+    log_out.ui \
     login.ui \
     mainwindow.ui \
     menu.ui \
     private_chat.ui \
     selection_page.ui \
-    signup.ui
+    signup.ui \
+    signup_client.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -15,6 +15,9 @@ public:
     explicit private_chat(QWidget *parent = nullptr);
     ~private_chat();
 
+private slots:
+    void on_pushButton_2_clicked();
+
 private:
     Ui::private_chat *ui;
 };

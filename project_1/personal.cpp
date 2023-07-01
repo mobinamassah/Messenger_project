@@ -16,6 +16,12 @@ personal::personal(QString _username, QString _password, QString _firstname, QSt
     lastname=lastname;
     token="";
 }
+personal::personal(QString _username, QString _password, QString _token)
+{
+    username=_username;
+    password=_password;
+    token=_token;
+}
 
 void personal::set_username(QString _username){
    username=_username;
