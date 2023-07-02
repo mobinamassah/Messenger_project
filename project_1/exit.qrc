@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/exit">
+        <file>6276642.png</file>
+    </qresource>
+    <qresource prefix="/send">
+        <file>4980390.png</file>
+    </qresource>
+    <qresource prefix="/ground">
+        <file>EDDA90A6-6D3A-4E23-9EBE-DBE8716AA232.jpeg</file>
+    </qresource>
+</RCC>

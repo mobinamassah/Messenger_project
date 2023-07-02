@@ -200,7 +200,7 @@ void signup::on_pushButton_clicked()
         QString password = ui->lineEdit_2->text();
         QString firstname = ui->lineEdit_3->text();
         QString lastname = ui->lineEdit_4->text();
-        signup_client client1;
+
         send_request(usernam,password,firstname,lastname);
 
 

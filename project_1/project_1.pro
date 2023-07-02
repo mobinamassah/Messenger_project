@@ -19,8 +19,7 @@ SOURCES += \
     personal.cpp \
     private_chat.cpp \
     selection_page.cpp \
-    signup.cpp \
-    signup_client.cpp
+    signup.cpp
 
 HEADERS += \
     data.h \
@@ -32,8 +31,7 @@ HEADERS += \
     personal.h \
     private_chat.h \
     selection_page.h \
-    signup.h \
-    signup_client.h
+    signup.h
 
 FORMS += \
     log_out.ui \
@@ -42,8 +40,7 @@ FORMS += \
     menu.ui \
     private_chat.ui \
     selection_page.ui \
-    signup.ui \
-    signup_client.ui
+    signup.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -52,6 +49,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     background_chat.qrc \
+    exit.qrc \
     pic22.qrc \
     pictuer.qrc \
     send.qrc \

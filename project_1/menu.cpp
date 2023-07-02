@@ -45,3 +45,9 @@ void menu::on_pushButton_3_clicked()
 
 }
 
+
+void menu::on_pushButton_4_clicked()
+{
+    close();
+}
+

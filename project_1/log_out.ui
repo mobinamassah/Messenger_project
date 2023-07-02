@@ -44,8 +44,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>180</y>
+     <x>200</x>
+     <y>170</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -59,14 +59,14 @@ border-rAdius:10px;
 </string>
    </property>
    <property name="text">
-    <string>ok</string>
+    <string>OK</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>180</y>
+     <y>170</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -81,14 +81,14 @@ border-rAdius:10px;
 </string>
    </property>
    <property name="text">
-    <string>cancel</string>
+    <string>Cancel</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>30</y>
+     <y>40</y>
      <width>201</width>
      <height>22</height>
     </rect>
@@ -103,7 +103,7 @@ background-color: rgb(158, 213, 166);</string>
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>80</y>
+     <y>90</y>
      <width>201</width>
      <height>22</height>
     </rect>
@@ -118,7 +118,7 @@ background-color: rgb(158, 213, 166);</string>
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>30</y>
+     <y>40</y>
      <width>81</width>
      <height>71</height>
     </rect>
