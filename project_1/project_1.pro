@@ -16,6 +16,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     menu.cpp \
+    page.cpp \
     personal.cpp \
     private_chat.cpp \
     selection_page.cpp \
@@ -28,16 +29,19 @@ HEADERS += \
     login.h \
     mainwindow.h \
     menu.h \
+    page.h \
     personal.h \
     private_chat.h \
     selection_page.h \
-    signup.h
+    signup.h \
+    user.h
 
 FORMS += \
     log_out.ui \
     login.ui \
     mainwindow.ui \
     menu.ui \
+    page.ui \
     private_chat.ui \
     selection_page.ui \
     signup.ui
@@ -52,6 +56,7 @@ RESOURCES += \
     exit.qrc \
     pic22.qrc \
     pictuer.qrc \
+    search.qrc \
     send.qrc \
     stic4.qrc \
     sticker.qrc \

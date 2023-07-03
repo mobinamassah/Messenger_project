@@ -1,6 +1,7 @@
 #include "login.h"
 #include "mainwindow.h"
 #include "menu.h"
+#include "page.h"
 #include "personal.h"
 #include "qmessagebox.h"
 #include "qnetworkreply.h"
@@ -9,6 +10,7 @@
 #include "ui_login.h"
 #include <QFile>
 #include "file_function.h"
+#include "user.h"
 #include <selection_page.h>
 
 login::login(QWidget *parent) :
@@ -21,6 +23,7 @@ login::login(QWidget *parent) :
     ui->setupUi(this);
     ui->lineEdit->setPlaceholderText("UserName");
     ui->lineEdit_2->setPlaceholderText("Password");
+    ui->lineEdit_2->setEchoMode(QLineEdit::Password);
     net_manage = new QNetworkAccessManager(this);
 
     connect(net_manage, &QNetworkAccessManager::finished, this, &::login::server_repl);
@@ -52,12 +55,15 @@ void login::send_reques(QString usernam, QString password)
 
 void login::server_repl(QNetworkReply* reply)
 {
+    //Show
+    data_user c = data_user(ui->lineEdit->text() , ui->lineEdit_2->text());
     QString reply_message = reply->readAll();
     QJsonDocument jDo = QJsonDocument::fromJson(reply_message.toUtf8());
     QJsonObject jOb = jDo.object();
     //qDebug()<<jObj["message"].toString();
     //qDebug()<<jObj["code"].toString();
     if(jOb["code"].toString().compare("200")== 0){
+        c.settoken(jOb["token"].toString());
         QString filename = "information";
         personal* newp=new personal(ui->lineEdit->text(),ui->lineEdit_2->text(),jOb["token"].toString());
         information.push_back(newp);
@@ -65,39 +71,36 @@ void login::server_repl(QNetworkReply* reply)
          file_write(filename,**it);
         }
 
+
     }
+    QMessageBox msg;
+            //msg.setIcon(QMessageBox::Information);
+            msg.setIcon(QMessageBox::Information);
+            msg.setWindowTitle(jOb["code"].toString());
+            msg.setText(jOb["message"].toString()+"😀");
+            msg.setIcon(QMessageBox::Information);
+            msg.setStyleSheet("QMessageBox { background-color: #3297a8; font-size: 16px; font-weight: bold; }");
+            //msg.setStandardButtons(QMessageBox::Ok);
+            //msg.setDefaultButton(QMessageBox::Ok);
+            if(jOb["code"].toString().compare("200")== 0){
+                    int r = msg.exec();
+                    if (r == QMessageBox::Ok) {
+                        hide();
+                        page* p = new page(this, c);
+                        //p->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint | Qt::Window | Qt::FramelessWindowHint);
+                        //p->setAttribute(Qt::WA_DeleteOnClose); // Optional: Delete the window when closed
+                        p->show();
+                        return;
 
-        QMessageBox msg;
-        //msg.setIcon(QMessageBox::Information);
-        msg.setIcon(QMessageBox::Information);
-        msg.setWindowTitle(jOb["code"].toString());
-        msg.setText(jOb["message"].toString()+"😀");
-        msg.setIcon(QMessageBox::Information);
-        msg.setStyleSheet("QMessageBox { background-color: #3297a8; font-size: 16px; font-weight: bold; }");
-        msg.setStandardButtons(QMessageBox::Ok);
-        msg.setDefaultButton(QMessageBox::Ok);
+                    }
+}
+                    //QPalette pal = msgBox.palette();
+                    //pal.setColor(QPalette::Window, Qt::red);
+                    //msgBox.setPalette(pal);
 
-        // Set the escape button to be the Cancel button
+                    msg.exec();
 
 
-        int ret = msg.exec();
-        if (ret == QMessageBox::Ok) {
-            Selection_page *sp=new Selection_page();
-                            sp->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);
-                            sp->show();
-                            this->close();
-                            return;
-        }
-
-        //QPalette pal = msgBox.palette();
-        //pal.setColor(QPalette::Window, Qt::red);
-        //msgBox.setPalette(pal);
-
-        msg.exec();
-
-        //QMessageBox::information(nullptr, jObj["code"].toString(),jObj["message"].toString());
-
-   //}
 }
 
 

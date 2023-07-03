@@ -32,6 +32,7 @@ signup::signup(QWidget *parent) :
     ui->setupUi(this);
     ui->lineEdit->setPlaceholderText("UserName");
     ui->lineEdit_2->setPlaceholderText("Password");
+    ui->lineEdit_2->setEchoMode(QLineEdit::Password);
     ui->lineEdit_3->setPlaceholderText("Firstname");
     ui->lineEdit_4->setPlaceholderText("Lastname");
     //QPushButton *sign_Button = new QPushButton("login");
@@ -225,12 +226,12 @@ void signup::on_pushButton_clicked()
 
         //signup_client.sign_Up(username, password, firstname, lastname);
 
-    QString filename = "information";
-    personal* newp=new personal(ui->lineEdit->text(),ui->lineEdit_2->text(),ui->lineEdit_3->text(),ui->lineEdit_4->text());
-    information.push_back(newp);
-    for(auto it=information.begin();it!=information.end();it++){
-        file_write(filename,**it);
-    }
+   // QString filename = "information";
+    //personal* newp=new personal(ui->lineEdit->text(),ui->lineEdit_2->text(),ui->lineEdit_3->text(),ui->lineEdit_4->text());
+    //information.push_back(newp);
+    //for(auto it=information.begin();it!=information.end();it++){
+        //file_write(filename,**it);
+    //}
 
     //menu *a=new menu();
     //a->setWindowFlags(Qt::CustomizeWindowHint |Qt::FramelessWindowHint);

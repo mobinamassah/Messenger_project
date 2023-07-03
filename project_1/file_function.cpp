@@ -4,7 +4,7 @@
 
 void file_write(QString fname,personal p){
     QFile file(fname);
-    if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+    if (file.open(QIODevice::WriteOnly| QIODevice::Append | QIODevice::Text))
     {
             QTextStream out(&file);
             out << p.get_username() << "/" << p.get_password() << "/" <<p.get_token();
@@ -15,7 +15,7 @@ void file_write(QString fname,personal p){
 void file_read(QString fname){
 
         QFile file(fname);
-           if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+           if (file.open(QIODevice::ReadOnly | QIODevice::Append  | QIODevice::Text))
            {
             QTextStream in(&file);
             while(!in.atEnd()){
