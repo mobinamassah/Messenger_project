@@ -14,6 +14,8 @@ struct messag {
     QString dst;
     QString body;
     QString date;
+    QDateTime dateTime;
+    QString dateString;
 };
 QVector<QString> getuserlist(QString token);
 QVector<QString> getuserlist(QString token){
@@ -115,7 +117,9 @@ QString extractSubstring_for_extracting_the_chat_info(const QString& original, Q
 
     return remaining;
 }
-
+bool sortMessageBlocks(const messag& block1, const messag& block2) {
+    return block1.dateTime < block2.dateTime;
+}
 
 QString sendmessagegroup_chat_to_server(QString token,QString dst , QString body) {
     QString url1= "http://api.barafardayebehtar.ml:8080/sendmessagegroup?token=";
@@ -346,40 +350,41 @@ QVector<messag> getuserchats_server_to_chat_display(QString token,QString dst) {
 
 QString signup(QString user,QString pass) {
 
-    QString url1= "http://api.barafardayebehtar.ml:8080/signup?username=";
-    QString url2= "&password=";
+    QString url1 = "http://api.barafardayebehtar.ml:8080/signup?username=";
+        QString url2 = "&password=";
 
-    url1=url1+user+url2+pass;
-    QUrl url(url1);
+        url1 = url1 + user + url2 + pass;
+        QUrl url(url1);
 
-    QNetworkAccessManager manager;
-
-
-    QNetworkRequest request;
-    request.setUrl(url);
+        QNetworkAccessManager manager;
 
 
-    QNetworkReply* reply = manager.get(request);
+        QNetworkRequest request;
+        request.setUrl(url);
 
 
-    QEventLoop loop;
-    QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
-    loop.exec();
-
-    QString response;
-    if (reply->error() == QNetworkReply::NoError) {
-
-        QByteArray responseData = reply->readAll();
-        response = QString(responseData);
-    } else {
-
-        qDebug() << "Error:" << reply->errorString();
-    }
+        QNetworkReply* reply = manager.get(request);
 
 
-    reply->deleteLater();
+        QEventLoop loop;
+        QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+        loop.exec();
 
-    return response_code(response);
+        QString response;
+        if (reply->error() == QNetworkReply::NoError) {
+
+            QByteArray responseData = reply->readAll();
+            response = QString(responseData);
+        }
+        else {
+
+            qDebug() << "Error:" << reply->errorString();
+        }
+
+
+        reply->deleteLater();
+
+        return response_code(response);
 }
 
 
@@ -411,9 +416,7 @@ page::page(QWidget *parent,const data_user& currentUser) :
 
     ui->label_3->setText(username);
 
-    QTimer* timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &::page::on_pushButton_3_clicked);
-    timer->start(2000);
+
 }
 
 
@@ -422,66 +425,137 @@ page::~page()
 {
     delete ui;
 }
-void page::show_chat(QString user)
+void page::show_users_chat(QString user)
 {
+    QVector<messag> chats = getuserchats_server_to_chat_display(UserToken, user);
+    ui->listWidget->clear();
+    for (int i = 0; i < chats.size(); i++) {
+        // user name
+        if (chats.at(i).src == ui->label->text()) {
+            QString text = chats.at(i).body;
+            QString name = chats.at(i).src;
+            QString date = chats.at(i).dateString;
+            QString formattedText;
 
-    QVector<messag> chats = getuserchats_server_to_chat_display(UserToken,user);
+            int charCount = 0;
+            const int maxCharsPerLine = 50;
+            const int marginForLineBreak = 30;
 
-    for (int i = 0 ; i < chats.size(); i++) {
-        QString text = chats.at(i).body;
-        QLabel* label = new QLabel(text);
-        label->setStyleSheet("QLabel { color: white; background-color: rgb(0, 85, 127);font: 9pt 'Segoe UI'; border-radius:5px}"); // Set the label's style
-        label->setAlignment(Qt::AlignLeft);
-        if (text.length() > 60) {
-            text.insert(60, "\n");
-            label->setText(text);
+            int labelHeight = 40;
+            QString message = name + ":\n" + text + "\n" + date;
+
+            for (const QChar& character : message) {
+                formattedText.append(character);
+                charCount++;
+
+                if (charCount == maxCharsPerLine) {
+                    formattedText.append('\n');
+                    charCount = 0;
+                    labelHeight += marginForLineBreak;
+                }
+            }
+
+            QLabel* label = new QLabel(formattedText);
+            label->setStyleSheet("QLabel { color: white; background-color: rgb(0, 170, 255); font: 12pt 'Segoe UI'; border-radius: 5px; margin-right: 400px; }"); // Set the label's style with right margin
+            label->setAlignment(Qt::AlignLeft);
+
+            labelHeight += (text.count('\n') * marginForLineBreak);
+
+            QListWidgetItem* newItem = new QListWidgetItem();
+            newItem->setSizeHint(QSize(0, labelHeight + 25));
+            ui->listWidget->addItem(newItem);
+            ui->listWidget->setItemWidget(newItem, label);
+            ui->listWidget->setSpacing(10);
+            ui->listWidget->scrollToBottom();
+
         }
-        int labelHeight = 40 + (text.count('\n') * 20);
-        QListWidgetItem* newItem = new QListWidgetItem();
-        newItem->setSizeHint(QSize(0, labelHeight));
-        ui->listWidget->addItem(newItem);
-        ui->listWidget->setItemWidget(newItem, label);
-        ui->listWidget->setSpacing(10);
-        QString styleSheet = QString("QListWidget::item { padding-left:5px; margin-left: 0; margin-right: 400; margin-bottom: 10px; }");
-        ui->listWidget->setStyleSheet(styleSheet);
-        ui->listWidget->scrollToBottom();
+        else if (chats.at(i).src == ui->label_2->text()) {
+            QString text = chats.at(i).body;
+            QString name = chats.at(i).src;
+            QString date = chats.at(i).dateString;
+            QString formattedText;
+
+            int charCount = 0;
+            const int maxCharsPerLine = 50;
+            const int marginForLineBreak = 30;
+
+            int labelHeight = 40;
+
+            QString message = name + ":\n" + text + "\n" + date;
+
+            for (const QChar& character : message) {
+                formattedText.append(character);
+                charCount++;
+
+                if (charCount == maxCharsPerLine) {
+                    formattedText.append('\n');
+                    charCount = 0;
+                    labelHeight += marginForLineBreak;
+                }
+            }
+
+            QLabel* label = new QLabel(formattedText);
+            label->setStyleSheet("QLabel { color: white; background-color: rgb(0, 85, 127); font: 12pt 'Segoe UI'; border-radius: 5px; margin-right: 400px; }"); // Set the label's style with right margin
+            label->setAlignment(Qt::AlignLeft);
+
+            labelHeight += (text.count('\n') * marginForLineBreak);
+
+            QListWidgetItem* newItem = new QListWidgetItem();
+            newItem->setSizeHint(QSize(0, labelHeight + 25));
+            ui->listWidget->addItem(newItem);
+            ui->listWidget->setItemWidget(newItem, label);
+            ui->listWidget->setSpacing(10);
+            ui->listWidget->scrollToBottom();
+        }
     }
 }
+
+
 
 
 void page::on_pushButton_clicked()
 {
 close();
 }
-void page::on_pushButton_3_clicked()
-{
-    QVector<QString> updatedUsers = getuserlist(UserToken);
-    ui->listWidget_2->clear();
-    for (int i = updatedUsers.size()-1; i >= 0; --i) {
-        ui->listWidget_2->addItem(updatedUsers[i]);
-    }
-}
+
 
 
 void page::on_pushButton_2_clicked()
 {
     QString name = ui->label_2->text();
-    QString text = ui->textEdit->toPlainText();
-    if(text == nullptr){
-        return;
-    }
-    sendmessageuser_chat_to_server(UserToken,name,text);
-    ui->textEdit->clear();
-    show_chat(name);
+        QString text = ui->textEdit->toPlainText();
+
+
+        int currentIndex = ui->tabWidget->currentIndex();
+
+        if (text.isEmpty()) {
+            return;
+        }
+
+        if (currentIndex == 0) {
+            sendmessageuser_chat_to_server(UserToken, name, text);
+            ui->textEdit->clear();
+            show_users_chat(name);
+
+        }
+
 }
-
-
 void page::on_listWidget_2_itemClicked(QListWidgetItem *item)
 {
-    QString name = item->text();
-    ui->label_2->setText(name);
-    show_chat(name);
-
+        QString name = item->text();
+        ui->label_2->setText(name);
+        show_users_chat(name);
 }
 
+
+
+
+
+void page::on_toolButton_clicked()
+{
+    QString username = ui->lineEdit->text();
+        ui->lineEdit->clear();
+        sendmessageuser_chat_to_server(UserToken, username, "hi");
+
+}
 

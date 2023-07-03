@@ -56,6 +56,7 @@ void login::send_reques(QString usernam, QString password)
 void login::server_repl(QNetworkReply* reply)
 {
     //Show
+
     data_user c = data_user(ui->lineEdit->text() , ui->lineEdit_2->text());
     QString reply_message = reply->readAll();
     QJsonDocument jDo = QJsonDocument::fromJson(reply_message.toUtf8());
@@ -83,6 +84,7 @@ void login::server_repl(QNetworkReply* reply)
             //msg.setStandardButtons(QMessageBox::Ok);
             //msg.setDefaultButton(QMessageBox::Ok);
             if(jOb["code"].toString().compare("200")== 0){
+                c.settoken(jOb["token"].toString());
                     int r = msg.exec();
                     if (r == QMessageBox::Ok) {
                         hide();

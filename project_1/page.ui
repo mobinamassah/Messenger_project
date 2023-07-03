@@ -162,7 +162,7 @@ background-color:rgba(0,0,0,0.6)</string>
       <rect>
        <x>20</x>
        <y>10</y>
-       <width>231</width>
+       <width>241</width>
        <height>24</height>
       </rect>
      </property>
@@ -188,12 +188,12 @@ font: 700 18pt &quot;Segoe UI&quot;;
 color: rgb(255, 255, 255);</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_3">
+    <widget class="QToolButton" name="toolButton">
      <property name="geometry">
       <rect>
-       <x>260</x>
+       <x>270</x>
        <y>10</y>
-       <width>31</width>
+       <width>21</width>
        <height>21</height>
       </rect>
      </property>

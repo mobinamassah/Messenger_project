@@ -27,11 +27,13 @@ private slots:
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
-    void show_chat(QString user);
+    void show_users_chat(QString user);
 
     void on_listWidget_2_itemClicked(QListWidgetItem *item);
 
-    void on_pushButton_3_clicked();
+
+
+    void on_toolButton_clicked();
 
 private:
     Ui::page *ui;
