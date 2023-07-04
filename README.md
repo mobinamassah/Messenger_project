@@ -4,7 +4,7 @@ For this purpose,we have used the c++ programming language, object-oriented thin
 Our project has 3 main parts which include the following:
 
 First, a page to select the desired activity:
-![8924F4E4-FE68-4424-AAA3-BD3290D48379](https://github.com/mobinamassah/Messenger_Undefined_9/assets/133854113/9de07ddb-edd6-48ee-adb7-1f4f65b53d04)
+![B1BD5571-FC0A-4109-B084-49F1B47C1B77](https://github.com/mobinamassah/Messenger_Undefined_9/assets/133854113/e5639bed-9c5d-433f-9855-d39882fe92aa)
 
 
 1)Signup
@@ -19,5 +19,6 @@ By selecting this option and entering her information, the registered user enter
 By choosing this option, like the login page, the user will exit the program by entering her information and is no longer a member of the messenger.
 ![8924F4E4-FE68-4424-AAA3-BD3290D48379](https://github.com/mobinamassah/Messenger_Undefined_9/assets/133854113/ed099d69-f6fd-4d9b-bbdd-aeba4d33c5be)
 
+Mobina Massah & Zahra Naderi 
+Goodbye
 
- 
